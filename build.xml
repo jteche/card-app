@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="CardApp" default="compile"  basedir=".">
+
+	<description>Simple Card Application</description>
+
+	<property name="src" location="src" />
+	<property name="classes" location="bin" />
+	<property name="lib" location="lib" />	
+	<property name="build.compiler" value="modern"/>
+	
+	<path id="libpath">
+		<fileset dir="${lib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+
+	<target name="clean">
+		<delete dir="${classes}" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${classes}" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac classpathref="libpath" debug="on" includeantruntime="false" srcdir="${src}" destdir="${classes}" />
+	</target>
+	<target name="build" depends="compile">
+	</target>
+	
+</project>
